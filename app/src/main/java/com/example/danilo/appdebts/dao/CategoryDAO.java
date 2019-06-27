@@ -67,7 +67,7 @@ public class CategoryDAO {
             cat.setText(result.getString(result.getColumnIndexOrThrow("tipo")));
             result.close();
             return  cat;
-        }
+        }return  null;
     }
 
 }
