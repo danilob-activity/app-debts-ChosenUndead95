@@ -25,4 +25,7 @@ public class ScriptDLL {
         sql.append(");");
         return sql.toString();
     }
+    public static String getCategorie(){
+        return "select id, tipo from categoria";
+    }
 }
