@@ -9,15 +9,18 @@ import java.util.Date;
 public class Debts {
     private long mId;
     private int mCodCat;
-    private float mReal;
+    private float mValor;
     private String descricao;
-    private Date mDataVencimento;
-    private Date mDataPagamento;
+    private String mDataVencimento;
+    private String mDataPagamento;
 
-    public Debts(int mId, int mCodCat, float mReal, String descricao, Date mDataVencimento, Date mDataPagamento) {
+    public Debts() {
+    }
+
+    public Debts(int mId, int mCodCat, float mReal, String descricao, String mDataVencimento, String mDataPagamento) {
         this.mId = mId;
         this.mCodCat = mCodCat;
-        this.mReal = mReal;
+        this.mValor = mReal;
         this.descricao = descricao;
         this.mDataVencimento = mDataVencimento;
         this.mDataPagamento = mDataPagamento;
@@ -31,43 +34,43 @@ public class Debts {
         return mCodCat;
     }
 
-    public float getmReal() {
-        return mReal;
+    public float getValor() {
+        return mValor;
     }
 
     public String getDescricao() {
         return descricao;
     }
 
-    public Date getmDataVencimento() {
+    public String getDataVencimento() {
         return mDataVencimento;
     }
 
-    public Date getmDataPagamento() {
+    public String getDataPagamento() {
         return mDataPagamento;
     }
 
-    public void setmId(int mId) {
+    public void setId(int mId) {
         this.mId = mId;
     }
 
-    public void setmCodCat(int mCodCat) {
+    public void setCodCat(int mCodCat) {
         this.mCodCat = mCodCat;
     }
 
-    public void setmReal(float mReal) {
-        this.mReal = mReal;
+    public void setValor(float mValor) {
+        this.mValor = mValor;
     }
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
 
-    public void setmDataVencimento(Date mDataVencimento) {
+    public void setDataVencimento(String mDataVencimento) {
         this.mDataVencimento = mDataVencimento;
     }
 
-    public void setmDataPagamento(Date mDataPagamento) {
+    public void setDataPagamento(String mDataPagamento) {
         this.mDataPagamento = mDataPagamento;
     }
 }

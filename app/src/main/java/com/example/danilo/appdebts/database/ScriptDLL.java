@@ -28,4 +28,7 @@ public class ScriptDLL {
     public static String getCategorie(){
         return "select id, tipo from categoria";
     }
+    public static String getDebts(){
+        return "select * from dividas";
+    }
 }
