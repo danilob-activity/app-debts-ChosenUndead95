@@ -61,6 +61,7 @@ public class DebtsDAO {
                 deb.setValor(result.getFloat(result.getColumnIndexOrThrow("valor")));
                 deb.setDescricao(result.getString(result.getColumnIndexOrThrow("descricao")));
                 deb.setDataVencimento(result.getString(result.getColumnIndexOrThrow("data_vencimento")));
+                deb.setDataPagamento(result.getString(result.getColumnIndexOrThrow("data_pagamento")));
                 debts.add(deb);
                 Log.d("DebtsDAO","Listando: "+deb.getId()+" - "+deb.getmCodCat()+ " - " + deb.getDescricao() + " - " + deb.getDataPagamento() + " - " + deb.getDataVencimento() );
             }while(result.moveToNext());
@@ -78,6 +79,8 @@ public class DebtsDAO {
             deb.setId(result.getInt(result.getColumnIndexOrThrow("id")));
             deb.setValor(result.getFloat(result.getColumnIndexOrThrow("valor")));
             deb.setDescricao(result.getString(result.getColumnIndexOrThrow("descricao")));
+            deb.setDataVencimento(result.getString(result.getColumnIndexOrThrow("data_vencimento")));
+            deb.setDataPagamento(result.getString(result.getColumnIndexOrThrow("data_pagamento")));
             result.close();
             return  deb;
         }return  null;
