@@ -7,6 +7,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -21,6 +22,7 @@ public class MainWindow extends AppCompatActivity {
     DebtsAdapter mDebtsAdapter;
     DebtsDAO mDebtsDAO;
     private ConstraintLayout mLayout;
+
     private SQLiteDatabase mConection;
     private DatabaseHelper mDataHelper;
 
@@ -40,20 +42,22 @@ public class MainWindow extends AppCompatActivity {
             }
         });
 
-        mListDebts = findViewById(R.id. recycler_view_debts);
-        mLayout = findViewById(R.id. layout);
+        mListDebts = findViewById(R.id.recycler_view_debts);
+        mLayout = findViewById(R.id.layout);
         createConnection();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager( this);
         mListDebts.setLayoutManager(linearLayoutManager);
         mDebtsAdapter = new DebtsAdapter(mDebtsDAO.listDebts());
         mListDebts.setAdapter(mDebtsAdapter);
         mListDebts.setHasFixedSize(true);
+
     }
 
     private void createConnection() {
         try {
             mDataHelper = new DatabaseHelper(this);
             mConection = mDataHelper.getWritableDatabase();
+            mDebtsDAO = new DebtsDAO(mConection);
             Snackbar.make(mLayout, R.string.sucess_conection, Snackbar.LENGTH_LONG).show();
         } catch (SQLException e) {
             Snackbar.make(mLayout, e.toString(), Snackbar. LENGTH_LONG).show();

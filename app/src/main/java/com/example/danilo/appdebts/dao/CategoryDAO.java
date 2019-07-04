@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by aluno on 27/06/19.
+ * Created by danilo on 27/06/19.
  */
 
 public class CategoryDAO {
@@ -22,52 +22,54 @@ public class CategoryDAO {
     }
     public void insert(Category cat){
         ContentValues contentValues = new ContentValues();
-        contentValues.put("tipo", cat.getText());
+        contentValues.put("tipo",cat.getType());
         mConnection.insertOrThrow("categoria",null,contentValues);
-        Log.d("CategoryDAO", "Inserção realizada com sucesso");
+        Log.d("CategoriaDAO","Inserção realizada com sucesso!");
+
+
     }
-    public void remove(int id){
-        String[] params = new String[1];
+    public void remove(long id){
+        String [] params = new String[1];
         params[0] = String.valueOf(id);
-        mConnection.delete("categoria","id = ?",params);
+        mConnection.delete("categoria","id=?",params);
     }
 
     public void alter(Category cat){
         ContentValues contentValues = new ContentValues();
-        contentValues.put("tipo", cat.getText());
-        String[] params = new String[1];
+        contentValues.put("tipo",cat.getType());
+        String [] params = new String[1];
         params[0] = String.valueOf(cat.getId());
-        mConnection.update("categoria",contentValues, "id = ?",params);
+        mConnection.update("categoria",contentValues,"id=?",params);
     }
-
     public List<Category> listCategories(){
         List<Category> categories = new ArrayList<Category>();
-        Cursor result = mConnection.rawQuery(ScriptDLL.getCategorie(), null);
-        if(result.getCount() > 0){
+        Cursor result = mConnection.rawQuery(ScriptDLL.getCategories(),null);
+        if(result.getCount()>0){
             result.moveToFirst();
             do{
                 Category cat = new Category();
-                cat.setId(result.getInt(result.getColumnIndexOrThrow("id")));
-                cat.setText(result.getString(result.getColumnIndexOrThrow("tipo")));
+                cat.setId(result.getLong(result.getColumnIndexOrThrow("id")));
+                cat.setType(result.getString(result.getColumnIndexOrThrow("tipo")));
                 categories.add(cat);
-                Log.d("CategoryDAO","Listando: "+cat.getId()+" - "+cat.getText());
+                Log.d("CategoriaDAO","Listando -- Id: "+cat.getId()+", Nome: "+cat.getType());
             }while(result.moveToNext());
             result.close();
+
         }
         return categories;
     }
-    public Category getCategory(int id){
+    public Category getCategory(long id){
         Category cat = new Category();
-        String[] params = new String[1];
+        String [] params = new String[1];
         params[0] = String.valueOf(id);
-        Cursor result = mConnection.rawQuery(ScriptDLL.getCategorie(),params);
+        Cursor result = mConnection.rawQuery(ScriptDLL.getCategory(),params);
         if(result.getCount()>0){
             result.moveToFirst();
-            cat.setId(result.getInt(result.getColumnIndexOrThrow("id")));
-            cat.setText(result.getString(result.getColumnIndexOrThrow("tipo")));
+            cat.setId(result.getLong(result.getColumnIndexOrThrow("id")));
+            cat.setType(result.getString(result.getColumnIndexOrThrow("tipo")));
             result.close();
-            return  cat;
-        }return  null;
+            return cat;
+        }
+        return null;
     }
-
 }

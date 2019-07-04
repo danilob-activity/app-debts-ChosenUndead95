@@ -1,76 +1,86 @@
 package com.example.danilo.appdebts.classes;
 
-import java.util.Date;
-
 /**
- * Created by aluno on 27/06/19.
+ * Created by danilo on 24/06/19.
  */
 
 public class Debts {
     private long mId;
-    private int mCodCat;
-    private float mValor;
-    private String descricao;
-    private String mDataVencimento;
-    private String mDataPagamento;
+    private Category mCategory;
+    private float mValue;
+    private String mDescription;
+    private String mPaymentDate; //data do vencimento
+    private String mPayDate;     //data do pagamento
 
     public Debts() {
     }
 
-    public Debts(int mId, int mCodCat, float mReal, String descricao, String mDataVencimento, String mDataPagamento) {
-        this.mId = mId;
-        this.mCodCat = mCodCat;
-        this.mValor = mReal;
-        this.descricao = descricao;
-        this.mDataVencimento = mDataVencimento;
-        this.mDataPagamento = mDataPagamento;
+    public Debts(Category category, float value, String description, String paymentDate, String payDate) {
+        mCategory = category;
+        mValue = value;
+        mDescription = description;
+        mPaymentDate = paymentDate;
+        mPayDate = payDate;
+    }
+
+    public Debts(Category category, float value, String paymentDate) {
+        mCategory = category;
+        mValue = value;
+        mPaymentDate = paymentDate;
+    }
+
+    public Debts(Category category, float value, String paymentDate, String payDate) {
+        mCategory = category;
+        mValue = value;
+        mPaymentDate = paymentDate;
+        mPayDate = payDate;
     }
 
     public long getId() {
         return mId;
     }
 
-    public int getmCodCat() {
-        return mCodCat;
+    public void setId(long id) {
+        mId = id;
     }
 
-    public float getValor() {
-        return mValor;
+    public Category getCategory() {
+        return mCategory;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public void setCategory(Category category) {
+        mCategory = category;
     }
 
-    public String getDataVencimento() {
-        return mDataVencimento;
+    public float getValue() {
+        return mValue;
     }
 
-    public String getDataPagamento() {
-        return mDataPagamento;
+    public void setValue(float value) {
+        mValue = value;
     }
 
-    public void setId(int mId) {
-        this.mId = mId;
+    public String getPaymentDate() {
+        return mPaymentDate;
     }
 
-    public void setCodCat(int mCodCat) {
-        this.mCodCat = mCodCat;
+    public void setPaymentDate(String paymentDate) {
+        mPaymentDate = paymentDate;
     }
 
-    public void setValor(float mValor) {
-        this.mValor = mValor;
+    public String getPayDate() {
+        return mPayDate;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setPayDate(String payDate) {
+        mPayDate = payDate;
     }
 
-    public void setDataVencimento(String mDataVencimento) {
-        this.mDataVencimento = mDataVencimento;
+    public String getDescription() {
+        return mDescription;
     }
 
-    public void setDataPagamento(String mDataPagamento) {
-        this.mDataPagamento = mDataPagamento;
+    public void setDescription(String description) {
+        mDescription = description;
     }
 }

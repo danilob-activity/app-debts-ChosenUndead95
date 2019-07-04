@@ -13,7 +13,7 @@ import com.example.danilo.appdebts.classes.Debts;
 import java.util.List;
 
 /**
- * Created by aluno on 03/07/19.
+ * Created by danilo on 03/07/19.
  */
 
 public class DebtsAdapter extends RecyclerView.Adapter<DebtsAdapter.ViewHolderDebts> {
@@ -23,11 +23,8 @@ public class DebtsAdapter extends RecyclerView.Adapter<DebtsAdapter.ViewHolderDe
     }
     @NonNull
     @Override
-    public DebtsAdapter.ViewHolderDebts onCreateViewHolder(
-            @NonNull ViewGroup parent, int
-            viewType) {
-        LayoutInflater layoutInflater = LayoutInflater.
-                from(parent.getContext());
+    public DebtsAdapter.ViewHolderDebts onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.list_view_debts, parent, false);
         ViewHolderDebts holderDebts = new ViewHolderDebts(view);
         return holderDebts;
@@ -37,19 +34,19 @@ public class DebtsAdapter extends RecyclerView.Adapter<DebtsAdapter.ViewHolderDe
     public void onBindViewHolder(@NonNull ViewHolderDebts holder, int position) {
         if (mData != null && mData.size() > 0) {
             Debts debt = mData.get(position);
-            holder. mDescription.setText(debt.getDescricao());
+            holder.mDescription.setText(debt.getDescription());
         }
     }
     @Override
     public int getItemCount() {
         return mData.size();
     }
+
     public class ViewHolderDebts extends RecyclerView.ViewHolder {
         public TextView mDescription;
-
         public ViewHolderDebts(View itemView) {
             super(itemView);
-            mDescription = (TextView) itemView.findViewById(R.id. textViewDescription);
+            mDescription = (TextView) itemView.findViewById(R.id.textViewCategory);
         }
     }
 }
