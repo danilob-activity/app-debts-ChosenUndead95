@@ -3,10 +3,7 @@
     <string name="sucess_conection">Conexão realizada com sucesso!</string>
     <string name="title_activity_main_window">MainWindow</string>
     <string name="textValue">Value</string>
-    <string name="textname">Name</string>
-    <string name="textValue">Value</string>
     <string name="textName">Name</string>
     <string name="okMenu">Ok</string>
     <string name="titleInsert">Inserir novo débito</string>
 </resources>
-
